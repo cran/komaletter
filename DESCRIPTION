@@ -1,7 +1,7 @@
 Package: komaletter
 Type: Package
 Title: Simple yet Flexible Letters via the 'KOMA-Script LaTeX Bundle'
-Version: 0.1.3
+Version: 0.2.0
 Authors@R: c(
     person("Robert", "Nuske", role=c("aut", "cre"), email="robert.nuske@mailbox.org", comment=c(ORCID="0000-0001-9773-2061")),
     person("Dirk", "Eddelbuettel", role="aut"),
@@ -21,9 +21,9 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2018-04-05 19:17:47 UTC; rnuske
+Packaged: 2018-04-13 06:51:21 UTC; rnuske
 Author: Robert Nuske [aut, cre] (<https://orcid.org/0000-0001-9773-2061>),
   Dirk Eddelbuettel [aut],
   Aaron Wolen [aut]
 Repository: CRAN
-Date/Publication: 2018-04-06 11:50:04 UTC
+Date/Publication: 2018-04-13 07:30:00 UTC

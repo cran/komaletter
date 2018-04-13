@@ -12,7 +12,7 @@
 
 <meta name="author" content="Robert Nuske" />
 
-<meta name="date" content="2018-04-05" />
+<meta name="date" content="2018-04-13" />
 
 <title>Introduction to komaletter</title>
 
@@ -32,7 +32,7 @@
 
 <h1 class="title toc-ignore">Introduction to komaletter</h1>
 <h4 class="author"><em>Robert Nuske</em></h4>
-<h4 class="date"><em>2018-04-05</em></h4>
+<h4 class="date"><em>2018-04-13</em></h4>
 
 
 
@@ -189,11 +189,58 @@
 </div>
 <div id="letter-layouts" class="section level2">
 <h2>Letter Layouts</h2>
-<p>The layout of letters is defined in so-called <strong>Letter Class Option</strong> files. KOMA-Script provides a number of standard styles (see following table). The package comes with a default style defined in <em>maintainers_delight.lco</em>. Users may as well define there own layout.</p>
+<p>The layout of letters is defined in so-called <strong>Letter Class Option</strong> files. KOMA-Script provides a number of standard styles (see following table). The package comes with a default style defined in <em>maintainersDelight.lco</em>. Users may as well define there own layout.</p>
 <p>Styles can be selected via the variable <code>lco</code> in the YAML header of the rmarkdown document. Provide either the name of one of the standard styles listed below or the path to a self defined style without file extension. If LaTeX can not find the <strong>lco</strong> file, it uses KOMA-Script’s default: <strong>DIN</strong>. Common errors besides typos are paths <em>with</em> extension, underscores in paths mangeled by pandoc.</p>
 <p>Custom <em>lco’s</em> may be constructed either based on one of the standard lco-files or by defining all aspects such as position of the recpients address, foldmarks etc.. For a comprehensive description refer to the <a href="https://komascript.de/~mkohm/scrguien.pdf">KOMA-Script Guide</a>.</p>
-<p>+—————+————-+——————+————+—————–+ | Country | Standard | Window Envelope | Paper Size | lco | +:==============+:============+:=================+:===========+:================+ | Germany | DIN 676 | DIN lang, C4, C5 | A4 | DIN  | | | | | | DINmtext | +—————+————-+——————+————+—————–+ | France | NF Z 11-001 | DL | A4 | NF | +—————+————-+——————+————+—————–+ | Switzerland | SN 010 130 | DIN lang, C4, C5 | A4 | SN, SNleft | +—————+—————–+————-+——————+————+ | United States | | commercial #9 | Letter | UScommercial9  | | | | | | UScommercial9DW | +—————+————-+——————+————+—————–+ | Japan | | Chou/You 3 &amp; 4 | A4 | NipponEL, … | +—————+————-+——————+————+—————–+</p>
-<p>Table: Some of KOMA-Script’s standard LCOs.</p>
+<table>
+<caption>Some of KOMA-Script’s standard LCOs.</caption>
+<thead>
+<tr class="header">
+<th align="left">Country</th>
+<th align="left">Standard</th>
+<th align="left">Window Envelope</th>
+<th align="left">Paper Size</th>
+<th align="left">lco</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Germany</td>
+<td align="left">DIN 676</td>
+<td align="left">DIN lang, C4, C5</td>
+<td align="left">A4</td>
+<td align="left">DIN, DINmtext</td>
+</tr>
+<tr class="even">
+<td align="left">France</td>
+<td align="left">NF Z 11-001</td>
+<td align="left">DL</td>
+<td align="left">A4</td>
+<td align="left">NF</td>
+</tr>
+<tr class="odd">
+<td align="left">Switzerland</td>
+<td align="left">SN 010 130</td>
+<td align="left">DIN lang, C4, C5</td>
+<td align="left">A4</td>
+<td align="left">SN, SNleft</td>
+</tr>
+<tr class="even">
+<td align="left">United States</td>
+<td align="left"></td>
+<td align="left">commercial #9</td>
+<td align="left">Letter</td>
+<td align="left">UScommercial9, UScommercial9DW</td>
+</tr>
+<tr class="odd">
+<td align="left">Japan</td>
+<td align="left"></td>
+<td align="left">Chou/You 3 &amp; 4</td>
+<td align="left">A4</td>
+<td align="left">NipponEL, …</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="hints" class="section level2">
 <h2>Hints</h2>
