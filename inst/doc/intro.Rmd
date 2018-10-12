@@ -21,14 +21,14 @@ knitr::opts_chunk$set(
 Letters are fairly standardized products and as such lend themselves to be 
 written in Markdown. This package is heavily based on [linl](https://CRAN.R-project.org/package=linl)
 but it wraps the very configurable KOMA-Script class *scrlttr2* instead of the
-standard document class *letter*.
+standard LaTeX document class *letter*.
  
 *komaletter* strives to turn a simple R Markdown document together with a layout
 definition into a beautiful letter (PDF). Layout definitions can be one of 
 KOMA-Script's standard styles, the package default style or a user defined style. For more details refer to the section [Letter Layouts](#letter-layouts). 
 
 Various aspects of the letter can be determined via variables in the R Markdown
-document metadata (aka YAML frontmatter), see [Letter settings](#letter-settings).
+document metadata (aka YAML header), see [Letter settings](#letter-settings).
 
 
 ## Usage
@@ -47,7 +47,12 @@ on the right.
 
 ## Letter Settings
 Various aspects of the letter can be customized via the following
-variables in the R Markdown document metadata (aka YAML frontmatter).
+variables in the R Markdown document metadata (aka YAML header).
+
+Although it rarely makes sense to write a letter without sender and recipient,
+a komaletter can be constructed by merely specifying the output format.
+All other variables are optional.
+
 
 Variable         | Description
 ---------------- | ------------------------------------------------------------
@@ -64,11 +69,11 @@ signature-before | Allows adjustment of vertical space before signature.
 Table: Most commonly used variables.
 
 
-All variables understood by the rmarkdown pdf format may be used in addition
-to the komaletter variables defined in the following table to further customize
-your letter. These variables do not change the placement of the elements of the
-letter (address, letter head, text). For those aspects refer to 
-[Letter Layouts](#letter-layouts).
+All variables understood by `rmarkdown`'s `pdf_document` format may be used 
+in addition to the `komaletter` variables defined in the following table 
+to further customize your letter. These variables do not change the placement
+of elements of the letter (address, letter head, text). For those aspects 
+refer to [Letter Layouts](#letter-layouts).
 
 Variable     | Description
 ------------ | ----------------------------------------------------------------
@@ -94,8 +99,9 @@ Table: Further komaletter variables.
 
 ## Letter Layouts
 The layout of letters is defined in so-called **Letter Class Option** files.
-KOMA-Script provides a number of standard styles (see following table). The package comes with a default style defined in *maintainersDelight.lco*. Users
-may as well define there own layout.
+KOMA-Script provides a number of standard styles (see following table). 
+The package comes with a default style defined in *maintainersDelight.lco*. 
+Users may as well define there own layout.
 
 Styles can be selected via the variable `lco` in the YAML header of the
 rmarkdown document. Provide either the name of one of the standard styles 
@@ -124,9 +130,8 @@ Table: Some of KOMA-Script's standard LCOs.
 
 ## Hints
 * The default papersize of KOMA-Script class *scrlttr2* is DIN A4. If you want to create an US style letter eg. using `lco: UScommercial9`, remember to set the papersize to `letter`.
-* Id you plan on writing non-english letters, , make sure you have the necessary 
-language packs, _i.e_ `texlive-lang-german`.
-* Since the figure environment is not defined in the classes `letter` and `scrlltr2`, pandoc has to be told not wrap the image into `\begin{figure}...\end{figure}`. Which can be achieved by ending the line with a backslash:
+* If you plan on writing non-english letters using _i.e._ `lang: de`, make sure you have the necessary LaTeX language packs, _i.e._ `texlive-lang-german`.
+* Since the figure environment is not defined in the classes `letter` and `scrlltr2`, pandoc has to be told not to wrap the image into `\begin{figure}...\end{figure}`. Which can be achieved by ending the line with a backslash:
 ```
 ![Alt text](image.png)\ 
 ```

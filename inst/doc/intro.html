@@ -12,7 +12,7 @@
 
 <meta name="author" content="Robert Nuske" />
 
-<meta name="date" content="2018-04-13" />
+<meta name="date" content="2018-10-12" />
 
 <title>Introduction to komaletter</title>
 
@@ -32,13 +32,13 @@
 
 <h1 class="title toc-ignore">Introduction to komaletter</h1>
 <h4 class="author"><em>Robert Nuske</em></h4>
-<h4 class="date"><em>2018-04-13</em></h4>
+<h4 class="date"><em>2018-10-12</em></h4>
 
 
 
-<p>Letters are fairly standardized products and as such lend themselves to be written in Markdown. This package is heavily based on <a href="https://CRAN.R-project.org/package=linl">linl</a> but it wraps the very configurable KOMA-Script class <em>scrlttr2</em> instead of the standard document class <em>letter</em>.</p>
+<p>Letters are fairly standardized products and as such lend themselves to be written in Markdown. This package is heavily based on <a href="https://CRAN.R-project.org/package=linl">linl</a> but it wraps the very configurable KOMA-Script class <em>scrlttr2</em> instead of the standard LaTeX document class <em>letter</em>.</p>
 <p><em>komaletter</em> strives to turn a simple R Markdown document together with a layout definition into a beautiful letter (PDF). Layout definitions can be one of KOMA-Script’s standard styles, the package default style or a user defined style. For more details refer to the section <a href="#letter-layouts">Letter Layouts</a>.</p>
-<p>Various aspects of the letter can be determined via variables in the R Markdown document metadata (aka YAML frontmatter), see <a href="#letter-settings">Letter settings</a>.</p>
+<p>Various aspects of the letter can be determined via variables in the R Markdown document metadata (aka YAML header), see <a href="#letter-settings">Letter settings</a>.</p>
 <div id="usage" class="section level2">
 <h2>Usage</h2>
 <p>An easy way to start a new <em>komaletter</em> is to ask for the skeleton document in RStudio via <em>New File &gt; R Markdown &gt; From Template &gt; komaletter</em> or <code>rmarkdown::draft(&quot;myletter.Rmd&quot;, template=&quot;pdf&quot;, package=&quot;komaletter&quot;)</code>. To turn the markown in a beautiful PDF use the Knit Button in RStudio or <code>rmarkdown::render(&quot;myletter.Rmd&quot;)</code>.</p>
@@ -50,7 +50,8 @@
 </div>
 <div id="letter-settings" class="section level2">
 <h2>Letter Settings</h2>
-<p>Various aspects of the letter can be customized via the following variables in the R Markdown document metadata (aka YAML frontmatter).</p>
+<p>Various aspects of the letter can be customized via the following variables in the R Markdown document metadata (aka YAML header).</p>
+<p>Although it rarely makes sense to write a letter without sender and recipient, a komaletter can be constructed by merely specifying the output format. All other variables are optional.</p>
 <table>
 <caption>Most commonly used variables.</caption>
 <colgroup>
@@ -59,50 +60,50 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Variable</th>
-<th align="left">Description</th>
+<th>Variable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">author</td>
-<td align="left">Writer of the letter</td>
+<td>author</td>
+<td>Writer of the letter</td>
 </tr>
 <tr class="even">
-<td align="left">return-address</td>
-<td align="left">Address of the sender; takes a list for a multi-line address.</td>
+<td>return-address</td>
+<td>Address of the sender; takes a list for a multi-line address.</td>
 </tr>
 <tr class="odd">
-<td align="left">address</td>
-<td align="left">Name and address of the recipient; takes a list.</td>
+<td>address</td>
+<td>Name and address of the recipient; takes a list.</td>
 </tr>
 <tr class="even">
-<td align="left">date</td>
-<td align="left">Custom date; if not specified, current date will be inserted.</td>
+<td>date</td>
+<td>Custom date; if not specified, current date will be inserted.</td>
 </tr>
 <tr class="odd">
-<td align="left">subject</td>
-<td align="left">Subject line.</td>
+<td>subject</td>
+<td>Subject line.</td>
 </tr>
 <tr class="even">
-<td align="left">opening</td>
-<td align="left">Text for the salutation.</td>
+<td>opening</td>
+<td>Text for the salutation.</td>
 </tr>
 <tr class="odd">
-<td align="left">closing</td>
-<td align="left">Text for the complementary close.</td>
+<td>closing</td>
+<td>Text for the complementary close.</td>
 </tr>
 <tr class="even">
-<td align="left">signature</td>
-<td align="left">Typed signature or image placed below closing.</td>
+<td>signature</td>
+<td>Typed signature or image placed below closing.</td>
 </tr>
 <tr class="odd">
-<td align="left">signature-before</td>
-<td align="left">Allows adjustment of vertical space before signature.</td>
+<td>signature-before</td>
+<td>Allows adjustment of vertical space before signature.</td>
 </tr>
 </tbody>
 </table>
-<p>All variables understood by the rmarkdown pdf format may be used in addition to the komaletter variables defined in the following table to further customize your letter. These variables do not change the placement of the elements of the letter (address, letter head, text). For those aspects refer to <a href="#letter-layouts">Letter Layouts</a>.</p>
+<p>All variables understood by <code>rmarkdown</code>’s <code>pdf_document</code> format may be used in addition to the <code>komaletter</code> variables defined in the following table to further customize your letter. These variables do not change the placement of elements of the letter (address, letter head, text). For those aspects refer to <a href="#letter-layouts">Letter Layouts</a>.</p>
 <table>
 <caption>Further komaletter variables.</caption>
 <colgroup>
@@ -111,78 +112,78 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Variable</th>
-<th align="left">Description</th>
+<th>Variable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">lco</td>
-<td align="left">Letter Class Option File (cf. <a href="#letter-layouts">Letter Layouts</a>).</td>
+<td>lco</td>
+<td>Letter Class Option File (cf. <a href="#letter-layouts">Letter Layouts</a>).</td>
 </tr>
 <tr class="even">
-<td align="left">lang</td>
-<td align="left">Language code according to <a href="https://tools.ietf.org/html/bcp47">BCP 47</a> (e.g. <code>en</code> or <code>en-GB</code>).</td>
+<td>lang</td>
+<td>Language code according to <a href="https://tools.ietf.org/html/bcp47">BCP 47</a> (e.g. <code>en</code> or <code>en-GB</code>).</td>
 </tr>
 <tr class="odd">
-<td align="left">papersize</td>
-<td align="left">Size of paper eg. <code>a4</code>, <code>letter</code>.</td>
+<td>papersize</td>
+<td>Size of paper eg. <code>a4</code>, <code>letter</code>.</td>
 </tr>
 <tr class="even">
-<td align="left">return-phone</td>
-<td align="left">Phone number of sender used in letter head.</td>
+<td>return-phone</td>
+<td>Phone number of sender used in letter head.</td>
 </tr>
 <tr class="odd">
-<td align="left">return-email</td>
-<td align="left">Email address of sender used in letter head.</td>
+<td>return-email</td>
+<td>Email address of sender used in letter head.</td>
 </tr>
 <tr class="even">
-<td align="left">return-url</td>
-<td align="left">Website of sender used in letter head.</td>
+<td>return-url</td>
+<td>Website of sender used in letter head.</td>
 </tr>
 <tr class="odd">
-<td align="left">place</td>
-<td align="left">Sender’s place used near date.</td>
+<td>place</td>
+<td>Sender’s place used near date.</td>
 </tr>
 <tr class="even">
-<td align="left">yourref</td>
-<td align="left">Addressee’s reference as part of reference line.</td>
+<td>yourref</td>
+<td>Addressee’s reference as part of reference line.</td>
 </tr>
 <tr class="odd">
-<td align="left">yourmail</td>
-<td align="left">Date of addressee’s referenced mail as part of reference line.</td>
+<td>yourmail</td>
+<td>Date of addressee’s referenced mail as part of reference line.</td>
 </tr>
 <tr class="even">
-<td align="left">myref</td>
-<td align="left">Sender’s reference as part of reference line.</td>
+<td>myref</td>
+<td>Sender’s reference as part of reference line.</td>
 </tr>
 <tr class="odd">
-<td align="left">customer</td>
-<td align="left">Customer number as part of reference line.</td>
+<td>customer</td>
+<td>Customer number as part of reference line.</td>
 </tr>
 <tr class="even">
-<td align="left">invoice</td>
-<td align="left">Invoice number as part of reference line.</td>
+<td>invoice</td>
+<td>Invoice number as part of reference line.</td>
 </tr>
 <tr class="odd">
-<td align="left">cc</td>
-<td align="left">Recipients to be carbon-copied; can take a list.</td>
+<td>cc</td>
+<td>Recipients to be carbon-copied; can take a list.</td>
 </tr>
 <tr class="even">
-<td align="left">encl</td>
-<td align="left">List of enclosures.</td>
+<td>encl</td>
+<td>List of enclosures.</td>
 </tr>
 <tr class="odd">
-<td align="left">ps</td>
-<td align="left">Text to be added at the end of the letter as a postscript.</td>
+<td>ps</td>
+<td>Text to be added at the end of the letter as a postscript.</td>
 </tr>
 <tr class="even">
-<td align="left">komaoption</td>
-<td align="left">Specify further KOMA options; takes a list (see <a href="https://komascript.de/~mkohm/scrguien.pdf">KOMA-Script documentation</a>).</td>
+<td>komaoption</td>
+<td>Specify further KOMA options; takes a list (see <a href="https://komascript.de/~mkohm/scrguien.pdf">KOMA-Script documentation</a>).</td>
 </tr>
 <tr class="odd">
-<td align="left">parskip</td>
-<td align="left">Defines how to mark new paragraphs, e.g. full, half, off (see <a href="https://komascript.de/~mkohm/scrguien.pdf">KOMA-Script documentation</a>).</td>
+<td>parskip</td>
+<td>Defines how to mark new paragraphs, e.g. full, half, off (see <a href="https://komascript.de/~mkohm/scrguien.pdf">KOMA-Script documentation</a>).</td>
 </tr>
 </tbody>
 </table>
@@ -196,48 +197,48 @@
 <caption>Some of KOMA-Script’s standard LCOs.</caption>
 <thead>
 <tr class="header">
-<th align="left">Country</th>
-<th align="left">Standard</th>
-<th align="left">Window Envelope</th>
-<th align="left">Paper Size</th>
-<th align="left">lco</th>
+<th>Country</th>
+<th>Standard</th>
+<th>Window Envelope</th>
+<th>Paper Size</th>
+<th>lco</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Germany</td>
-<td align="left">DIN 676</td>
-<td align="left">DIN lang, C4, C5</td>
-<td align="left">A4</td>
-<td align="left">DIN, DINmtext</td>
+<td>Germany</td>
+<td>DIN 676</td>
+<td>DIN lang, C4, C5</td>
+<td>A4</td>
+<td>DIN, DINmtext</td>
 </tr>
 <tr class="even">
-<td align="left">France</td>
-<td align="left">NF Z 11-001</td>
-<td align="left">DL</td>
-<td align="left">A4</td>
-<td align="left">NF</td>
+<td>France</td>
+<td>NF Z 11-001</td>
+<td>DL</td>
+<td>A4</td>
+<td>NF</td>
 </tr>
 <tr class="odd">
-<td align="left">Switzerland</td>
-<td align="left">SN 010 130</td>
-<td align="left">DIN lang, C4, C5</td>
-<td align="left">A4</td>
-<td align="left">SN, SNleft</td>
+<td>Switzerland</td>
+<td>SN 010 130</td>
+<td>DIN lang, C4, C5</td>
+<td>A4</td>
+<td>SN, SNleft</td>
 </tr>
 <tr class="even">
-<td align="left">United States</td>
-<td align="left"></td>
-<td align="left">commercial #9</td>
-<td align="left">Letter</td>
-<td align="left">UScommercial9, UScommercial9DW</td>
+<td>United States</td>
+<td></td>
+<td>commercial #9</td>
+<td>Letter</td>
+<td>UScommercial9, UScommercial9DW</td>
 </tr>
 <tr class="odd">
-<td align="left">Japan</td>
-<td align="left"></td>
-<td align="left">Chou/You 3 &amp; 4</td>
-<td align="left">A4</td>
-<td align="left">NipponEL, …</td>
+<td>Japan</td>
+<td></td>
+<td>Chou/You 3 &amp; 4</td>
+<td>A4</td>
+<td>NipponEL, …</td>
 </tr>
 </tbody>
 </table>
@@ -246,8 +247,8 @@
 <h2>Hints</h2>
 <ul>
 <li>The default papersize of KOMA-Script class <em>scrlttr2</em> is DIN A4. If you want to create an US style letter eg. using <code>lco: UScommercial9</code>, remember to set the papersize to <code>letter</code>.</li>
-<li>Id you plan on writing non-english letters, , make sure you have the necessary language packs, <em>i.e</em> <code>texlive-lang-german</code>.</li>
-<li><p>Since the figure environment is not defined in the classes <code>letter</code> and <code>scrlltr2</code>, pandoc has to be told not wrap the image into <code>\begin{figure}...\end{figure}</code>. Which can be achieved by ending the line with a backslash:</p>
+<li>If you plan on writing non-english letters using <em>i.e.</em> <code>lang: de</code>, make sure you have the necessary LaTeX language packs, <em>i.e.</em> <code>texlive-lang-german</code>.</li>
+<li><p>Since the figure environment is not defined in the classes <code>letter</code> and <code>scrlltr2</code>, pandoc has to be told not to wrap the image into <code>\begin{figure}...\end{figure}</code>. Which can be achieved by ending the line with a backslash:</p>
 <pre><code>![Alt text](image.png)\ </code></pre>
 <p>If you just want a regular inline image, just make sure it is not the only thing in the paragraph. One way to do this is to insert a nonbreaking space after the image:</p>
 <pre><code>![This image won't be a figure](/url/of/image.png)\</code></pre></li>
