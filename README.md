@@ -1,6 +1,12 @@
 ## komaletter: Simple yet flexible Letters via the KOMA-Script LaTeX Bundle 
 
-[![Travis build status](https://travis-ci.org/rnuske/komaletter.svg?branch=master)](https://travis-ci.org/rnuske/komaletter) [![Package-License](http://img.shields.io/badge/license-GPL--3-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-3.0.html) [![CRAN](http://www.r-pkg.org/badges/version/komaletter)](https://cran.r-project.org/package=komaletter) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1221317.svg)](https://doi.org/10.5281/zenodo.1221317)
+[![Travis build status](https://travis-ci.org/rnuske/komaletter.svg?branch=master)](https://travis-ci.org/rnuske/komaletter) 
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/rnuske/komaletter?branch=master&svg=true)](https://ci.appveyor.com/project/rnuske/komaletter) 
+[![Drone Build Status](https://cloud.drone.io/api/badges/rnuske/komaletter/status.svg)](https://cloud.drone.io/rnuske/komaletter) 
+[![Package-License](https://img.shields.io/badge/license-GPL--3-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-3.0.html) 
+[![CRAN](https://www.r-pkg.org/badges/version/komaletter)](https://cran.r-project.org/package=komaletter) 
+[![Dependencies](https://tinyverse.netlify.com/badge/komaletter)](https://cran.r-project.org/package=komaletter) 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1221316.svg)](https://doi.org/10.5281/zenodo.1221316)
 
 ### Motivation
 Simple letters tend to look very much alike. They are either determined by a 
@@ -13,7 +19,7 @@ possibility to define your own layout. The *komaletter* package also provides
 it's own default layout loosely based on DIN 5008B.
 
 This package is an adaptation of the
-[linl](https://cran.r-project.org/package=rmarkdown) package
+[linl](https://cran.r-project.org/package=linl) package
 by Dirk Eddelbuettel and Aaron Wolen. Which leans on earlier work by 
 Aaron Wolen in his [pandoc-letter](https://github.com/aaronwolen/pandoc-letter) 
 repository and extends it for use from R via the
