@@ -1,3 +1,6 @@
+# komaletter 0.3.2
+  * modified pandoc LaTeX template to consider that tex package 'grffile' might not be available. grffile is now a legacy package and was absent from TeX Live for a short time. (thanks @cderv)
+
 # komaletter 0.3.1
   * added a section to the intro vignette about non-English letters
   * slightly darker header and foldmarks in default style (maintainersDelight.lco)
