@@ -1,4 +1,11 @@
 \documentclass[version=last,$if(fontsize)$$fontsize$$else$12pt$endif$,{"$if(lco)$$lco$$else$$lco_default$$endif$"},$if(lang)$$babel-lang$,$endif$$if(address)$$else$addrfield=false,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{scrlttr2}
+
+% For Debuging the Layout  ----------------------------------------------------
+% \LoadLetterOption{visualize}
+% \showfields{head,address,location,refline,foot}
+% \setkomafont{field}{\color{blue}}
+% -----------------------------------------------------------------------------
+
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
@@ -247,6 +254,10 @@ $if(subject)$\setkomavar{subject}{$subject$}$endif$
 $if(author)$\setkomavar{fromname}{$author$}$endif$
 $if(return-address)$
 \setkomavar{fromaddress}{$for(return-address)$$return-address$$sep$\\$endfor$}
+$endif$
+
+$if(return-short)$
+\setkomavar{backaddress}{$for(return-short)$$return-short$$sep$\\$endfor$}
 $endif$
 
 \begin{document}

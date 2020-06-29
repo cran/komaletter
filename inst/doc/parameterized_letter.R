@@ -1,10 +1,10 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ---
 #  params:
 #    name: John
@@ -13,11 +13,11 @@ knitr::opts_chunk$set(
 #  output: komaletter::komaletter
 #  ---
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  params$name
 #  params$gift
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ---
 #  params:
 #    name: John
@@ -28,10 +28,10 @@ knitr::opts_chunk$set(
 #  output: komaletter::komaletter
 #  ---
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  rmarkdown::render("example.Rmd", params=list(name="Jane"))
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ---
 #  params:
 #    # scalar:
@@ -42,7 +42,7 @@ knitr::opts_chunk$set(
 #    address_block: "\n  - FirstName LastName\n  - 123 Main St\n  - Anytown"
 #  ---
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ---
 #  params:
 #    name: John Doe
@@ -52,7 +52,7 @@ knitr::opts_chunk$set(
 #  output: komaletter::komaletter
 #  ---
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ---
 #  author: Max Mustermann
 #  return-address: [Musterstr. 12, 34567 Musterstadt]
@@ -72,7 +72,7 @@ knitr::opts_chunk$set(
 #  
 #  thank you very much for the beautiful `r params$gift`. It was a pleasure to have you.
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  recipients <- data.frame(name=c("Megan", "Bob"),
 #                           gift=c("candlestick", "flowers"),
 #                           address=c("[Megan Smith, 4156 Tincidunt Ave, Green Bay Indiana 19759]",

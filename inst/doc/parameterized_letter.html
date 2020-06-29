@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Robert Nuske" />
 
-<meta name="date" content="2019-12-07" />
+<meta name="date" content="2020-06-29" />
 
 <title>Parameterized Letters for Mass Mailings</title>
 
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -120,9 +135,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -291,7 +303,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -306,7 +319,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Parameterized Letters for Mass Mailings</h1>
 <h4 class="author">Robert Nuske</h4>
-<h4 class="date">2019-12-07</h4>
+<h4 class="date">2020-06-29</h4>
 
 
 
@@ -314,7 +327,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <ul>
 <li>compile information of recipients</li>
 <li>write template letter with corresponding parameters</li>
-<li>merge template letter and recipient’s information</li>
+<li>combine template letter and recipient’s information</li>
 </ul>
 <div id="basics-of-mail-merge-with-komaletter" class="section level2">
 <h2>Basics of Mail Merge with <code>komaletter</code></h2>
@@ -365,7 +378,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <span id="cb5-7"><a href="#cb5-7"></a>  <span class="co"># block style sequence:</span></span>
 <span id="cb5-8"><a href="#cb5-8"></a>  address_block<span class="op">:</span><span class="st"> &quot;</span><span class="ch">\n</span><span class="st">  - FirstName LastName</span><span class="ch">\n</span><span class="st">  - 123 Main St</span><span class="ch">\n</span><span class="st">  - Anytown&quot;</span></span>
 <span id="cb5-9"><a href="#cb5-9"></a><span class="op">---</span></span></code></pre></div>
-<p>Since the address and the letter opening are defined in the YAML metadata. The corresponding parameters must be declared and after that put to use within the YAML metadata. Parameter values are accessed in R Code. In the YAML metadata header this means inline code snippets <code>`r expression`</code>. Since backticks <code>`</code> are ‘reserved indicators’ in YAML, the code snippet usually needs to be wrapped in quotes.</p>
+<p>Since the address and the letter opening are defined in the YAML metadata. The corresponding parameters must be declared and afterwards put to use within the YAML metadata. Parameter values are accessed in R Code. In the YAML metadata header this means inline code snippets <code>`r expression`</code>. Since backticks <code>`</code> are ‘reserved indicators’ in YAML, the code snippet usually needs to be wrapped in quotes.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">---</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>params<span class="op">:</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John Doe</span>
@@ -380,7 +393,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="solution" class="section level2">
 <h2>Solution</h2>
 <p>Or rather a <strong>hack</strong> found as bycatch at <a href="https://stackoverflow.com/a/31862074">stackoverflow</a> circumventing the issue at the moment.</p>
-<p>As explained above, the address is a YAML sequence and sequences can not be enclosed in quotes. To access the parameter in the main YAML metadata header the inline R Code snippet has to be wrapped in quotes and R expressions wrapped in quotes evaluates to a value enclosed in quotes.</p>
+<p>As explained above, the address is a YAML sequence and sequences can not be enclosed in quotes. To access the parameter in the main YAML metadata header the inline R Code snippet has to be wrapped in quotes and R expressions wrapped in quotes evaluate to a value enclosed in quotes.</p>
 <p>Mysteriously, the rule that backticks must be enclosed in quotes is not enforced in a second YAML metadata block. You can use two metadata blocks because Pandoc combines YAML metadata blocks while converting the .md file to the final document. So in a second metadata block the inline R Code snippet can be written without quotes resulting in a correctly formatted YAML sequence.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">---</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>author<span class="op">:</span><span class="st"> </span>Max Mustermann</span>
