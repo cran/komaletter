@@ -12,33 +12,26 @@
 
 <meta name="author" content="Robert Nuske" />
 
-<meta name="date" content="2020-06-29" />
+<meta name="date" content="2021-02-02" />
 
 <title>Parameterized Letters for Mass Mailings</title>
 
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
 
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
-  }
-});
-</script>
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,16 +41,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -66,9 +57,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -122,6 +113,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -319,7 +311,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Parameterized Letters for Mass Mailings</h1>
 <h4 class="author">Robert Nuske</h4>
-<h4 class="date">2020-06-29</h4>
+<h4 class="date">2021-02-02</h4>
 
 
 
@@ -335,58 +327,58 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="declaring-parameters" class="section level3">
 <h3>Declaring Parameters</h3>
 <p>Parameters are declared using the <code>params</code> field within the YAML metadata header. You can specify one or more parameters with each item on a new line.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>params<span class="op">:</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  gift<span class="op">:</span><span class="st"> </span>candlestick</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>output<span class="op">:</span><span class="st"> </span>komaletter<span class="op">::</span>komaletter</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="op">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="op">---</span></a>
+<a class="sourceLine" id="cb1-2" title="2">params<span class="op">:</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John</a>
+<a class="sourceLine" id="cb1-4" title="4">  gift<span class="op">:</span><span class="st"> </span>candlestick</a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6">output<span class="op">:</span><span class="st"> </span>komaletter<span class="op">::</span>komaletter</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="op">---</span></a></code></pre></div>
 </div>
 <div id="using-parameters" class="section level3">
 <h3>Using Parameters</h3>
 <p>The declared parameters are automatically made available within the knit environment as components of the read-only list <code>params</code>. For example, the values of the above parameters can be accessed with the following R Code:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>params<span class="op">$</span>name</span>
-<span id="cb2-2"><a href="#cb2-2"></a>params<span class="op">$</span>gift</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">params<span class="op">$</span>name</a>
+<a class="sourceLine" id="cb2-2" title="2">params<span class="op">$</span>gift</a></code></pre></div>
 <p>If the value of a parameter shall be used in the YAML metadata header, the Parameter must be declared previously. Since the backtick ` is a reserved character in YAML, the inline R Code snippet has to be wrapped in quotes.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">---</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>params<span class="op">:</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John</span>
-<span id="cb3-4"><a href="#cb3-4"></a>  gift<span class="op">:</span><span class="st"> </span>candlestick</span>
-<span id="cb3-5"><a href="#cb3-5"></a>  </span>
-<span id="cb3-6"><a href="#cb3-6"></a>subject<span class="op">:</span><span class="st"> &quot;`r params$gift`&quot;</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a>output<span class="op">:</span><span class="st"> </span>komaletter<span class="op">::</span>komaletter</span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="op">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="op">---</span></a>
+<a class="sourceLine" id="cb3-2" title="2">params<span class="op">:</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John</a>
+<a class="sourceLine" id="cb3-4" title="4">  gift<span class="op">:</span><span class="st"> </span>candlestick</a>
+<a class="sourceLine" id="cb3-5" title="5">  </a>
+<a class="sourceLine" id="cb3-6" title="6">subject<span class="op">:</span><span class="st"> &quot;`r params$gift`&quot;</span></a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8">output<span class="op">:</span><span class="st"> </span>komaletter<span class="op">::</span>komaletter</a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="op">---</span></a></code></pre></div>
 </div>
 <div id="setting-parameter-values" class="section level3">
 <h3>Setting Parameter values</h3>
 <p>To set the parameter values, you can add the <code>params</code> argument to <code>rmarkdown::render</code>. If a parameter does not get a value, the default defined during parameter declaration is used (eg. <code>John</code>, <code>candlestick</code>).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>rmarkdown<span class="op">::</span><span class="kw">render</span>(<span class="st">&quot;example.Rmd&quot;</span>, <span class="dt">params=</span><span class="kw">list</span>(<span class="dt">name=</span><span class="st">&quot;Jane&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">rmarkdown<span class="op">::</span><span class="kw">render</span>(<span class="st">&quot;example.Rmd&quot;</span>, <span class="dt">params=</span><span class="kw">list</span>(<span class="dt">name=</span><span class="st">&quot;Jane&quot;</span>))</a></code></pre></div>
 </div>
 </div>
 <div id="challenges-of-mail-merge-with-komaletter" class="section level2">
 <h2>Challenges of Mail Merge with <code>komaletter</code></h2>
 <p>R Markdown and thus <code>komaletter</code> combines R Code, YAML and Markdown. R Markdown documents are processed by <code>knitr</code> to pure YAML and Markdown which in turn is send to pandoc for conversion to the final document type (pdf in this case). A parametrized letter has to obey the restrictions of all parts involved.</p>
 <p>The most common personalization are the address of the recipient and the salutation or opening. <code>komaletter</code> expects the address to be a YAML sequence within the YAML metadata header. YAML sequences can be written in flow or block style. Both need quotation marks to protect the square brackets or to enable the escape code <code>\n</code> during parameter declaration in the YAML metadata.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="op">---</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>params<span class="op">:</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="st">  </span><span class="co"># scalar:</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John Doe</span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="co"># flow style sequence:</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>  address_flow<span class="op">:</span><span class="st"> &quot;[FirstName LastName, 123 Main St, Anytown]&quot;</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="co"># block style sequence:</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>  address_block<span class="op">:</span><span class="st"> &quot;</span><span class="ch">\n</span><span class="st">  - FirstName LastName</span><span class="ch">\n</span><span class="st">  - 123 Main St</span><span class="ch">\n</span><span class="st">  - Anytown&quot;</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="op">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="op">---</span></a>
+<a class="sourceLine" id="cb5-2" title="2">params<span class="op">:</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="co"># scalar:</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John Doe</a>
+<a class="sourceLine" id="cb5-5" title="5">  <span class="co"># flow style sequence:</span></a>
+<a class="sourceLine" id="cb5-6" title="6">  address_flow<span class="op">:</span><span class="st"> &quot;[FirstName LastName, 123 Main St, Anytown]&quot;</span></a>
+<a class="sourceLine" id="cb5-7" title="7">  <span class="co"># block style sequence:</span></a>
+<a class="sourceLine" id="cb5-8" title="8">  address_block<span class="op">:</span><span class="st"> &quot;</span><span class="ch">\n</span><span class="st">  - FirstName LastName</span><span class="ch">\n</span><span class="st">  - 123 Main St</span><span class="ch">\n</span><span class="st">  - Anytown&quot;</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="op">---</span></a></code></pre></div>
 <p>Since the address and the letter opening are defined in the YAML metadata. The corresponding parameters must be declared and afterwards put to use within the YAML metadata. Parameter values are accessed in R Code. In the YAML metadata header this means inline code snippets <code>`r expression`</code>. Since backticks <code>`</code> are ‘reserved indicators’ in YAML, the code snippet usually needs to be wrapped in quotes.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">---</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>params<span class="op">:</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John Doe</span>
-<span id="cb6-4"><a href="#cb6-4"></a>  </span>
-<span id="cb6-5"><a href="#cb6-5"></a>opening<span class="op">:</span><span class="st"> &quot;`r paste0(&#39;Dear &#39;, params$name, &#39;,&#39;)`&quot;</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a>output<span class="op">:</span><span class="st"> </span>komaletter<span class="op">::</span>komaletter</span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="op">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="op">---</span></a>
+<a class="sourceLine" id="cb6-2" title="2">params<span class="op">:</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John Doe</a>
+<a class="sourceLine" id="cb6-4" title="4">  </a>
+<a class="sourceLine" id="cb6-5" title="5">opening<span class="op">:</span><span class="st"> &quot;`r paste0(&#39;Dear &#39;, params$name, &#39;,&#39;)`&quot;</span></a>
+<a class="sourceLine" id="cb6-6" title="6"></a>
+<a class="sourceLine" id="cb6-7" title="7">output<span class="op">:</span><span class="st"> </span>komaletter<span class="op">::</span>komaletter</a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="op">---</span></a></code></pre></div>
 <p>The result of the quoted R expression <code>&quot;`r expression`&quot;</code> is a value enclosed in double quotes, i.e. <code>&quot;value&quot;</code>, which is not harmful if the result is of R type character corresponding to a YAML scalar. YAML scalars can be enclosed in single or double quotes or not wrapped at all. But everything in quotes is a scalar to YAML.</p>
 <p>Consequently this means that expressions that are supposed to supply an address and thus a YAML sequence, must not be enclosed in quotes! Which poses a main problem since we learned above inline code snippets need to be enclosed in quotes in the main YAML metadata header.</p>
 </div>
@@ -395,54 +387,53 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>Or rather a <strong>hack</strong> found as bycatch at <a href="https://stackoverflow.com/a/31862074">stackoverflow</a> circumventing the issue at the moment.</p>
 <p>As explained above, the address is a YAML sequence and sequences can not be enclosed in quotes. To access the parameter in the main YAML metadata header the inline R Code snippet has to be wrapped in quotes and R expressions wrapped in quotes evaluate to a value enclosed in quotes.</p>
 <p>Mysteriously, the rule that backticks must be enclosed in quotes is not enforced in a second YAML metadata block. You can use two metadata blocks because Pandoc combines YAML metadata blocks while converting the .md file to the final document. So in a second metadata block the inline R Code snippet can be written without quotes resulting in a correctly formatted YAML sequence.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">---</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>author<span class="op">:</span><span class="st"> </span>Max Mustermann</span>
-<span id="cb7-3"><a href="#cb7-3"></a>return<span class="op">-</span>address<span class="op">:</span><span class="st"> </span>[Musterstr. <span class="dv">12</span>, <span class="dv">34567</span> Musterstadt]</span>
-<span id="cb7-4"><a href="#cb7-4"></a></span>
-<span id="cb7-5"><a href="#cb7-5"></a>params<span class="op">:</span><span class="st"> </span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John</span>
-<span id="cb7-7"><a href="#cb7-7"></a>  address<span class="op">:</span><span class="st"> &quot;[John Doe, 123 Main St, Anytown]&quot;</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>  gift<span class="op">:</span><span class="st"> </span>candlestick</span>
-<span id="cb7-9"><a href="#cb7-9"></a></span>
-<span id="cb7-10"><a href="#cb7-10"></a>output<span class="op">:</span><span class="st"> </span>komaletter<span class="op">::</span>komaletter</span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="op">---</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="op">---</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a>address<span class="op">:</span><span class="st"> `</span><span class="dt">r params$address</span><span class="st">`</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>opening<span class="op">:</span><span class="st"> `</span><span class="dt">r paste0(&#39;Dear &#39;, params$name, &#39;,&#39;)</span><span class="st">`</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a>closing<span class="op">:</span><span class="st"> &quot;Yours truly,&quot;</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="op">---</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a></span>
-<span id="cb7-18"><a href="#cb7-18"></a>thank you very much <span class="cf">for</span> the beautiful <span class="st">`</span><span class="dt">r params$gift</span><span class="st">`</span>. It was a pleasure to have you.</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="op">---</span></a>
+<a class="sourceLine" id="cb7-2" title="2">author<span class="op">:</span><span class="st"> </span>Max Mustermann</a>
+<a class="sourceLine" id="cb7-3" title="3">return<span class="op">-</span>address<span class="op">:</span><span class="st"> </span>[Musterstr. <span class="dv">12</span>, <span class="dv">34567</span> Musterstadt]</a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5">params<span class="op">:</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="st">  </span>name<span class="op">:</span><span class="st"> </span>John</a>
+<a class="sourceLine" id="cb7-7" title="7">  address<span class="op">:</span><span class="st"> &quot;[John Doe, 123 Main St, Anytown]&quot;</span></a>
+<a class="sourceLine" id="cb7-8" title="8">  gift<span class="op">:</span><span class="st"> </span>candlestick</a>
+<a class="sourceLine" id="cb7-9" title="9"></a>
+<a class="sourceLine" id="cb7-10" title="10">output<span class="op">:</span><span class="st"> </span>komaletter<span class="op">::</span>komaletter</a>
+<a class="sourceLine" id="cb7-11" title="11"><span class="op">---</span></a>
+<a class="sourceLine" id="cb7-12" title="12"><span class="op">---</span></a>
+<a class="sourceLine" id="cb7-13" title="13">address<span class="op">:</span><span class="st"> `</span><span class="dt">r params$address</span><span class="st">`</span></a>
+<a class="sourceLine" id="cb7-14" title="14">opening<span class="op">:</span><span class="st"> `</span><span class="dt">r paste0(&#39;Dear &#39;, params$name, &#39;,&#39;)</span><span class="st">`</span></a>
+<a class="sourceLine" id="cb7-15" title="15">closing<span class="op">:</span><span class="st"> &quot;Yours truly,&quot;</span></a>
+<a class="sourceLine" id="cb7-16" title="16"><span class="op">---</span></a>
+<a class="sourceLine" id="cb7-17" title="17"></a>
+<a class="sourceLine" id="cb7-18" title="18">thank you very much <span class="cf">for</span> the beautiful <span class="st">`</span><span class="dt">r params$gift</span><span class="st">`</span>. It was a pleasure to have you.</a></code></pre></div>
 <p>The template letter above can then be called with various values</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>recipients &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name=</span><span class="kw">c</span>(<span class="st">&quot;Megan&quot;</span>, <span class="st">&quot;Bob&quot;</span>),</span>
-<span id="cb8-2"><a href="#cb8-2"></a>                         <span class="dt">gift=</span><span class="kw">c</span>(<span class="st">&quot;candlestick&quot;</span>, <span class="st">&quot;flowers&quot;</span>),</span>
-<span id="cb8-3"><a href="#cb8-3"></a>                         <span class="dt">address=</span><span class="kw">c</span>(<span class="st">&quot;[Megan Smith, 4156 Tincidunt Ave, Green Bay Indiana 19759]&quot;</span>,</span>
-<span id="cb8-4"><a href="#cb8-4"></a>                                   <span class="st">&quot;[Robert Pitts, 5543 Aliquet St, Fort Dodge GA 20783]&quot;</span>),</span>
-<span id="cb8-5"><a href="#cb8-5"></a>                         <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span>
-<span id="cb8-6"><a href="#cb8-6"></a></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(recipients)){</span>
-<span id="cb8-8"><a href="#cb8-8"></a>  rmarkdown<span class="op">::</span><span class="kw">render</span>(<span class="st">&quot;template_letter.Rmd&quot;</span>, </span>
-<span id="cb8-9"><a href="#cb8-9"></a>                    <span class="dt">params=</span><span class="kw">list</span>(<span class="dt">name=</span>recipients[i, <span class="st">&quot;name&quot;</span>], </span>
-<span id="cb8-10"><a href="#cb8-10"></a>                                <span class="dt">gift=</span>recipients[i, <span class="st">&quot;gift&quot;</span>], </span>
-<span id="cb8-11"><a href="#cb8-11"></a>                                <span class="dt">address=</span>recipients[i, <span class="st">&quot;address&quot;</span>]),</span>
-<span id="cb8-12"><a href="#cb8-12"></a>                    <span class="dt">output_file=</span><span class="kw">paste0</span>(<span class="st">&quot;letter_&quot;</span>, recipients[i, <span class="st">&#39;name&#39;</span>], <span class="st">&quot;.pdf&quot;</span>))</span>
-<span id="cb8-13"><a href="#cb8-13"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">recipients &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name=</span><span class="kw">c</span>(<span class="st">&quot;Megan&quot;</span>, <span class="st">&quot;Bob&quot;</span>),</a>
+<a class="sourceLine" id="cb8-2" title="2">                         <span class="dt">gift=</span><span class="kw">c</span>(<span class="st">&quot;candlestick&quot;</span>, <span class="st">&quot;flowers&quot;</span>),</a>
+<a class="sourceLine" id="cb8-3" title="3">                         <span class="dt">address=</span><span class="kw">c</span>(<span class="st">&quot;[Megan Smith, 4156 Tincidunt Ave, Green Bay Indiana 19759]&quot;</span>,</a>
+<a class="sourceLine" id="cb8-4" title="4">                                   <span class="st">&quot;[Robert Pitts, 5543 Aliquet St, Fort Dodge GA 20783]&quot;</span>),</a>
+<a class="sourceLine" id="cb8-5" title="5">                         <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb8-6" title="6"></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(recipients)){</a>
+<a class="sourceLine" id="cb8-8" title="8">  rmarkdown<span class="op">::</span><span class="kw">render</span>(<span class="st">&quot;template_letter.Rmd&quot;</span>, </a>
+<a class="sourceLine" id="cb8-9" title="9">                    <span class="dt">params=</span><span class="kw">list</span>(<span class="dt">name=</span>recipients[i, <span class="st">&quot;name&quot;</span>], </a>
+<a class="sourceLine" id="cb8-10" title="10">                                <span class="dt">gift=</span>recipients[i, <span class="st">&quot;gift&quot;</span>], </a>
+<a class="sourceLine" id="cb8-11" title="11">                                <span class="dt">address=</span>recipients[i, <span class="st">&quot;address&quot;</span>]),</a>
+<a class="sourceLine" id="cb8-12" title="12">                    <span class="dt">output_file=</span><span class="kw">paste0</span>(<span class="st">&quot;letter_&quot;</span>, recipients[i, <span class="st">&#39;name&#39;</span>], <span class="st">&quot;.pdf&quot;</span>))</a>
+<a class="sourceLine" id="cb8-13" title="13">}</a></code></pre></div>
 </div>
 <div id="further-information" class="section level2">
 <h2>Further Information</h2>
 <ul>
 <li>R Markdown
 <ul>
-<li><a href="https://rmarkdown.rstudio.com/developer_parameterized_reports">Article “Parametrized Reports”</a> on RStudio’s R Markdown website</li>
 <li><a href="https://bookdown.org/yihui/rmarkdown/parameterized-reports.html">Chapter “Parametrized Reports”</a> in the book “R Markdown: The Definitive Guide”</li>
 <li><a href="https://rmarkdown.rstudio.com/lesson-6.html">Lesson 6 “Parameters”</a> in “Get Started”-Course on RStudio’s R Markdown website</li>
 </ul></li>
 <li>YAML
 <ul>
-<li><a href="http://yaml.org/refcard.html">YAML Reference card</a> (Scalar indicators, Escape codes, Misc. Indicators for reserved indicators)</li>
-<li><a href="http://yaml.org/spec/current.html">YAML Specification</a> (Syntax, Indicator Characters: reserved characters, Escape Sequences, Scalar Styles, Sequence Styles)</li>
-<li><a href="http://yaml.org/spec/current.html#id2543032">YAML block sequence</a></li>
-<li><a href="http://yaml.org/spec/current.html#id2542413">YAML flow sequence</a></li>
+<li><a href="https://yaml.org/refcard.html">YAML Reference card</a> (Scalar indicators, Escape codes, Misc. Indicators for reserved indicators)</li>
+<li><a href="https://yaml.org/spec/current.html">YAML Specification</a> (Syntax, Indicator Characters: reserved characters, Escape Sequences, Scalar Styles, Sequence Styles)</li>
+<li><a href="https://yaml.org/spec/current.html#id2543032">YAML block sequence</a></li>
+<li><a href="https://yaml.org/spec/current.html#id2542413">YAML flow sequence</a></li>
 </ul></li>
 </ul>
 </div>

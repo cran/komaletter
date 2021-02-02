@@ -13,13 +13,12 @@ komaletter(..., keep_tex = FALSE)
 LaTeX files are to be kept, defaults to \code{FALSE}}
 }
 \value{
-R Markdown output format to pass to
-\code{\link[rmarkdown:render]{rmarkdown::render()}}
+R Markdown output to pass to \code{\link[rmarkdown:render]{rmarkdown::render()}}
 }
 \description{
 A format for LaTeX letters via R Markdown using the KOMA-Script class
 'scrlttr2'. It provides layouts for many different window envelope types
-(German, US, French, Japanese, ...) and the possibility to define your own.
+(German, US, French, Japanese, ...) and lets you define customized layouts.
 }
 \section{Letter features}{
 Various aspects of the letter can be customized via the following
@@ -66,6 +65,7 @@ Further variables defined by komaletter:\tabular{ll}{
    cc \tab Recipients to be carbon-copied; can take a list. \cr
    encl \tab List of enclosures. \cr
    ps \tab Text to be added at the end of the letter as a postscript. \cr
+   inline-links \tab If true, do standard inline hyperlinks rather than footnotes (styling is author's job, cf. vignette \code{letter_example2}). \cr
    komaoption \tab Specify further KOMA options; takes a list (see \href{https://komascript.de/~mkohm/scrguien.pdf}{KOMA-Script documentation}). \cr
    parskip \tab Defines how to mark new paragraphs, e.g. full, half, off (see \href{https://komascript.de/~mkohm/scrguien.pdf}{KOMA-Script documentation}). \cr
 }
@@ -82,9 +82,13 @@ rmarkdown::render("my_letter.Rmd")
 
 }
 \references{
-JJ Allaire, Yihui Xie, Jonathan McPherson et al. (2020). rmarkdown: Dynamic Documents for R.
-R package version 2.1. \url{https://cran.r-project.org/package=rmarkdown}
+JJ Allaire, Yihui Xie, Jonathan McPherson et al. (2020). rmarkdown:
+Dynamic Documents for R. R package version 2.6.
+\url{https://cran.r-project.org/package=rmarkdown}
 
 Aaron Wolen and Andrew Dunning (2017). pandoc-letter. GitHub Repository.
 \url{https://github.com/aaronwolen/pandoc-letter}
+
+Markus Kohm (2020). KOMA-Script: A versatile LaTeX \eqn{2_\epsilon}{2\epsilon} bundle.
+\url{https://komascript.de/~mkohm/scrguien.pdf}
 }
