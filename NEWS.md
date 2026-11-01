@@ -1,3 +1,7 @@
+# komaletter 0.5.1
+  * updated templates due to KOMA-Script deprecation of \@setplength and \ifkomavarempty in v3.49 (new versions of those were available since v3.28 in year 2020)
+  * longtables in pandoc > 2.11 needed updates in template.tex (mainly latex packages array and calc).
+
 # komaletter 0.5.0
   * added sections to default letter layout, since the employed KOMA-Script letter class `scrlttr2` has no sections. Just use `#`, `##`, `###` in your markdown and if you need section numbers set the YAML option `numbersections: true`.
   * enable References. If a bibliography is included in the YAML header and a citekey is used, a paragraph with a reference list gets added to the end of the text. 

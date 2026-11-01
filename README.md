@@ -4,7 +4,7 @@
 [![R-CMD-check](https://github.com/rnuske/komaletter/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rnuske/komaletter/actions/workflows/R-CMD-check.yaml)
 [![Package-License](https://img.shields.io/badge/license-GPL--3-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-3.0.html) 
 [![CRAN](https://www.r-pkg.org/badges/version/komaletter)](https://cran.r-project.org/package=komaletter) 
-[![Dependencies](https://tinyverse.netlify.com/badge/komaletter)](https://cran.r-project.org/package=komaletter) 
+[![Dependencies](https://tinyverse.netlify.app/badge/komaletter)](https://cran.r-project.org/package=komaletter) 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1221316.svg)](https://doi.org/10.5281/zenodo.1221316)
 <!-- badges: end -->
 
@@ -14,7 +14,7 @@ Simple letters tend to look very much alike. They are either determined by a
 standard eg. window envelope style or writer's preferences. Since the layout 
 is fixed, letters can be written perfectly in R Markdown.
 
-The [KOMA-Script LaTeX Bundle](https://www.komascript.de) provides layouts for
+The [KOMA-Script LaTeX Bundle](https://komascript.de) provides layouts for
 many common window envelope types (German, US, French, Japanese, ...) and the
 possibility to define your own layout. The *komaletter* package also provides
 it's own default letter layout loosely based on DIN 5008B.
@@ -92,11 +92,11 @@ remotes::install_github("rnuske/komaletter")
 
 ### Requirements
 Beyond the R package dependency `rmarkdown`, a working `pandoc` binary and a
-`LaTeX` distribution including `KOMA-Script` is needed. RStudio installs it's
-own copy of `pandoc`, otherwise do what is needed on your OS. As for LaTeX look
-for `texlive` which is included in most Linux distributions. KOMA-Script is
-part of all but the most bare bone LaTeX distributions. Something like 
-`sudo apt install pandoc pandoc-citeproc texlive` should provide everything 
+`LaTeX` distribution including `KOMA-Script` >= v3.28  is needed. RStudio
+installs it's own copy of `pandoc`, otherwise do what is needed on your OS. 
+As for LaTeX look for `texlive` which is included in most Linux distributions.
+KOMA-Script is part of all but the most bare bone LaTeX distributions. Something
+like `sudo apt install pandoc pandoc-citeproc texlive` should provide everything 
 needed on Debian/Ubuntu. To get a working LaTeX on Windows it is recommended 
 to use the service of the R package `tinytex`.
 

@@ -1,4 +1,4 @@
-\documentclass[version=last,$if(fontsize)$$fontsize$$else$12pt$endif$,{"$if(lco)$$lco$$else$$lco_default$$endif$"},$if(lang)$$babel-lang$,$endif$$if(address)$$else$addrfield=false,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{scrlttr2}
+\documentclass[version=last,$if(fontsize)$$fontsize$$else$12pt$endif$,{"$if(lco)$$lco$$else$$lco_default$$endif$"},$if(lang)$$babel-lang$,$endif$$if(address)$$else$addrfield=false,$endif$$if(papersize)$paper=$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{scrlttr2}
 
 % For Debuging the Layout  ----------------------------------------------------
 % \LoadLetterOption{visualize}
@@ -17,7 +17,7 @@ $if(linestretch)$
 $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
+\usepackage{fixltx2e} % provides \textsubscript | empty package since 2025
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -158,9 +158,19 @@ $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 $if(tables)$
-\usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 $endif$
 $if(graphics)$
 \usepackage{graphicx}
@@ -241,15 +251,15 @@ $if(signature)$
 % set default figure placement to htbp
 \def\fps@figure{htbp}
 $if(signature-before)$
-\@setplength{sigbeforevskip}{$signature-before$}
+\setplength{sigbeforevskip}{$signature-before$}
 $endif$
 \setkomavar{signature}{$signature$}
 $else$
 % suppress signature
 $if(signature-before)$
-\@setplength{sigbeforevskip}{$signature-before$}
+\setplength{sigbeforevskip}{$signature-before$}
 $else$
-\@setplength{sigbeforevskip}{0mm}
+\setplength{sigbeforevskip}{0mm}
 $endif$
 \setkomavar{signature}{}
 $endif$
